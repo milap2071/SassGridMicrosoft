@@ -1,0 +1,188 @@
+
+@mixin create-canvas-button($btn-circle-color, $btn-arrow, $badge-color, $btn-hover-color: white) {
+    .btn-circle {
+        // display: none;
+        z-index: 10;
+        width: 45px;
+        height: 0;
+        border-radius: 50%;
+        background-color: $btn-circle-color;
+        opacity: 0;
+        @include transition-ease;
+
+        &.btn-slide-left {
+            display: block;
+            @include absCentering(0, auto, 0, 2px);
+        }
+
+        &.btn-slide-right {
+            display: block;
+            @include absCentering(0, 2px, 0, auto);
+        }
+
+        i {
+            color: $btn-arrow;
+        }
+    }
+
+    .badge {
+        @include absCentering(auto, 0, 0, 0);
+        @include flexCenter(row, nowrap);
+        height: 50px;
+        justify-content: center;
+        gap: 10px;
+        z-index: 11;
+
+        &__circle {
+            width: 7px;
+            height: 7px;
+            border: 1px solid $badge-color;
+            border-radius: 50%;
+        }
+
+        i {
+            margin: 0 5px;
+            padding: 12px 15px;
+            color: $badge-color;
+            @include transition-ease(all, 0.2s);
+
+            &:hover {
+                background-color: #000;
+                color: #fff;
+            }
+
+        }
+    }
+
+    &:hover {
+
+        .btn-circle {
+            opacity: 1;
+            height: 45px;
+
+            &:hover {
+                @include transition-ease(box-shadow, 0.1s);
+                box-shadow: rgba(0, 0, 25, 0.35) 0px 5px 15px;
+                background-color: $btn-hover-color;
+            }
+        }
+
+    }
+}
+
+@mixin create-canvas($txt-bg-color : $canvas-txt-bg, $txt-color : $primary-color, $btn-color : $primary-color, $btn-txt-color : $secondary-color) {
+    .canvas {
+        @include flexCenter(column, nowrap);
+        position: relative;
+        width: 100%;
+        display: block;
+        // background-color: #f2f2f2;
+        background-color: red;
+
+        &::before {
+            display: block;
+            content: "";
+            padding-bottom: 56.4 * 1%;
+            width: 100%;
+        }
+
+        @include create-mq($bp-md, 'min') {
+            &::before {
+                padding-bottom: 53.55 * 1%;
+            }
+
+        }
+
+        @include create-mq($bp-lg, 'min') {
+            &::before {
+                padding-bottom: 41.55 * 1%;
+            }
+
+        }
+
+        @include create-mq($bp-xl, 'min') {
+            &::before {
+                padding-bottom: 37.55 * 1%;
+            }
+
+        }
+
+        &__picture {
+            position: absolute;
+            width: 100%;
+            height: calc(100% - 320px);
+            top: 0;
+            left: 0;
+            max-width: 2048px;
+            transform: scale(1.025);
+
+            @include create-mq($bp-md, 'min') {
+                height: 100%;
+
+            }
+
+        }
+
+
+        &__text {
+
+            position: relative;
+            // top: 100%;
+            @include flexCenter(column, nowrap);
+            justify-content: center;
+            height: 320px;
+            gap: 5px;
+            text-align: center;
+            padding: 15% 10%;
+            background-color: $txt-bg-color;
+            color: $txt-color;
+            transform: translateX(0px);
+            @include transition-ease;
+
+            button {
+                background-color: $btn-color;
+                color: $btn-txt-color;
+                margin-top: 10px;
+
+                ::before {
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    -webkit-font-smoothing: antialiased;
+
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    // content: "\f007";
+                    color: red;
+                }
+            }
+
+            @include create-mq($bp-md, 'min') {
+                position: absolute;
+                background-color: transparent;
+                top: 0;
+                left: 6%;
+                bottom: 0;
+                margin: auto 0;
+                width: 37%;
+                gap: 15px;
+                padding: 0;
+                text-align: left;
+                align-items: flex-start;
+                transform: translateX(0px);
+
+                &--br {
+                    top: auto;
+                    left: auto;
+                    right: 5%;
+                    bottom: 0;
+                    margin: 0;
+                }
+            }
+
+        }
+
+
+    }
+}

@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+
+    
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.hidden{
+    display: none !important;
+}
+
+//LINKS
+.link-underline{
+    //for bottom border in hover shifting text up
+    padding-bottom: 1px;
+    border-bottom: 2px solid transparent;
+ 
+    &--a{
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+.link-underline:hover{
+    border-bottom: 2px solid #000;
+}
+
+.menu__link{
+    white-space: nowrap;
+}
+
+//ANIMATIONS
+@mixin transition-ease($target: all, $duration: 0.3s) {
+    transition: $target $duration ease-in-out;
+    
+}
+
+
+//DISPLAY
+@mixin flexBetween($direction, $wrap) {
+    display: flex;
+    flex-flow: $direction $wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flexCenter($direction, $wrap) {
+    display: flex;
+    flex-flow: $direction $wrap;
+    // justify-content: center;
+    align-items: center;
+}
+
+//MEDIA QUERIES
+
+@mixin create-mq($breakpoint, $min-max){
+    @media only screen and (#{$min-max}-width: $breakpoint * 1px) {
+        @content;
+    }
+}
+@each $modifier, $breakpoint in $breakpoints {
+    @include create-mq($breakpoint, 'min'){
+        .hidden-#{$modifier}-up{
+            display: none !important;
+            
+        }
+    }
+
+    @include create-mq($breakpoint, 'max'){
+        .hidden-#{$modifier}-down{
+            display: none !important;
+        }
+    }
+    
+}
+
+//Centering Absolute positioned elements
+@mixin absCentering($top, $right, $bottom, $left){
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    margin: auto;
+}

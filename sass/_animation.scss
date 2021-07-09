@@ -1,0 +1,33 @@
+@mixin create-kf($kf-name, $x-value, $x-end-value : 0) {
+    @keyframes #{$kf-name} {
+        0%{
+            transform: translateX($x-value) scale(1.0150);
+            
+        }
+        100%{
+            transform: translateX($x-end-value) scale(1.0125);
+            
+        }
+    }
+}
+
+
+@mixin create-animation($animation-name, $x-value, $x-end-value : 0) {
+    animation: cubic-bezier(.16,1,.29,.99) .5s both;
+    animation-name: $animation-name;
+    @include create-kf($animation-name, $x-value, $x-end-value);    
+}
+
+.animate-left{
+    @include create-animation('slide-in-left', -30px);
+}
+.animate-right{
+    @include create-animation('slide-in-right', 30px);
+}
+.animate-left-canvas{
+    @include create-animation('slide-in-left-canvas', -10px);
+}
+.animate-right-canvas{
+    @include create-animation('slide-in-right-canvas', 10px);
+}
+

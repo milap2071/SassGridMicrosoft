@@ -1,0 +1,22 @@
+.row-element {
+    padding: 0 10px;
+    min-width: 175px;
+}
+
+.row-element:first-of-type{
+    padding-left: 0;
+    padding-right: 15px;
+}
+
+.row-element:nth-of-type(2){
+    padding-left: 5px;
+}
+
+.row-element:nth-last-of-type(2){
+    padding-right: 5px;
+}
+
+.row-element:last-of-type{
+    padding-right: 0;
+    padding-left: 15px;
+}

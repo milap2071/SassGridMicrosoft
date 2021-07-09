@@ -1,0 +1,91 @@
+// h2{
+//     font-size: $article-head-fs;
+//     font-weight: $article-head-bold;
+// }
+body {
+    font-size: $article-text-fs;
+}
+
+.menu {
+    font-size: $header-menu-fontSize;
+}
+
+@mixin font-size($fs-map, $a-breakpoints: $breakpoints) {
+
+    @each $fs-breakpoint,
+    $fs-font-size in $fs-map {
+
+        // If $fs-font-size is a key that exists in
+        // $fs-breakpoints, use the value
+        @if map-has-key($a-breakpoints, $fs-breakpoint) {
+            $fs-breakpoint: map-get($a-breakpoints, $fs-breakpoint) * 1px;
+        }
+
+        @media screen and (min-width: $fs-breakpoint) {
+            @include make-font-size($fs-font-size);
+
+        }
+    }
+}
+
+// Utility function for mixin font-size
+@mixin make-font-size($fs-font-size) {
+    // include
+    // both font-size and line-height
+    font-size: nth($fs-font-size, 1);
+
+    @if (length($fs-font-size) > 1) {
+        font-weight: nth($fs-font-size, 2);
+        ;
+        line-height: nth($fs-font-size, 3);
+    }
+
+    @else {
+        font-size: $fs-font-size;
+    }
+}
+
+h1 {
+    @include font-size($h1-fs);
+}
+
+h2 {
+    @include font-size($h2-fs);
+}
+
+p {
+    @include font-size($p-fs);
+}
+
+.links {
+    @include font-size($pb-fs);
+}
+
+button {
+    background-color: transparent;
+    @include flexCenter(row, nowrap);
+    padding: 10px 1.2rem;
+    border: none;
+    cursor: pointer;
+    // font-size: $button-text-fs;
+    // font-weight: $button-text-bold;
+    @include font-size($pb-fs);
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.bg-white{
+    background-color: #fff;
+}
+
+.btn-white {
+    background-color: white;
+    color: black;
+}
+
+.btn-black {
+    background-color: #000;
+    color: #fff;
+}

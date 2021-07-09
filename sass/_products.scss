@@ -1,0 +1,106 @@
+.products {
+    @include flexCenter(column, nowrap);
+    align-items: flex-start;
+
+    .section-head {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 50px 10px 0;
+    }
+
+    &__container {
+        @include flexBetween(row, wrap);
+        align-items: flex-start;
+        margin: 15px 20px 60px;
+        row-gap: 50px;
+        background-color: blue;
+        // width: 100%;
+
+
+        .row-element {
+            // padding: 0 10px;
+            min-width: 175px;
+
+            .blog{
+                background-color: green;
+                &:hover{
+                    background-color: red;
+                }
+            }
+        }
+
+
+
+    }
+
+    &__container-ad{
+        @include flexCenter(column, nowrap);
+        justify-content: center;
+        background-color: #e6e6e6;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    @include create-mq($bp-sm, 'min') {
+        .section-head {
+            margin-left: 4%;
+        }
+
+        &__container {
+            // margin-left: 4%;
+            // margin-right: 4%;
+        }
+
+
+    }
+
+    @include create-mq($bp-lg, 'min') {
+        .section-head {
+            margin-left: 0;
+        }
+        &__container {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+
+    }
+
+}
+
+.product {
+    @include flexCenter(column, nowrap);
+    align-items: flex-start;
+    gap: 5px;
+
+
+    &__img {
+        margin-bottom: 10px;
+
+        @include create-mq($bp-md, 'min') {
+            margin-bottom: 30px;
+        }
+    }
+
+    &__h2 {}
+
+    &__text {}
+
+    &__links {
+        @include flexCenter(row, wrap);
+        gap: 20px;
+
+        &__item {
+            color: $link-color;
+            @include flexCenter(row, nowrap);
+            gap: 10px;
+        }
+    }
+}
+
+.ad{
+    margin: 20px 0 10px;
+    @include flexCenter(column, nowrap);
+    text-align: center;
+    gap: 10px;
+}

@@ -1,0 +1,67 @@
+// @mixin create-mq($breakpoint, $min-or-max) {
+//     @if($breakpoint==0) {
+//         @content;
+//     }
+
+//     @else {
+//         @media screen and (#{$min-or-max}-width: $breakpoint * 1px) {
+//             @content;
+//         }
+//     }
+// }
+
+$grid__bp--sm: 576;
+$grid__bp--md: 768;
+$grid__bp--lg: 992;
+$grid__cols: 12;
+$map-grid-props: ('xs': 0, 'sm' : $grid__bp--sm, 'md': $grid__bp--md, 'lg': $grid__bp--lg);
+
+
+@mixin create-col-classes ($modifier, $grid__cols, $breakpoint) {
+    @include create-mq($breakpoint, 'min') {
+        .col-#{$modifier}-offset-0{
+            margin-left: 0;
+        }
+
+        @for $i from 1 through $grid__cols {
+            .col-#{$modifier}-#{$i} {
+                @if($i == 12){
+                flex-basis: (100 / ($grid__cols / $i)) * 1%;
+                }
+                @else{
+                    flex-basis: calc(((100 / (#{$grid__cols} / #{$i})) * 1%) - 20px);
+                }
+
+            }
+
+            .col-#{$modifier}-offset-#{$i}{
+                margin-left: (100 / ($grid__cols / $i)) * 1%
+            }
+        }
+    }
+
+}
+//  Create grids based on media
+@each $modifier, $breakpoint in $breakpoints {
+    @include create-col-classes($modifier, $grid__cols, $breakpoint);
+}
+
+//Hide grid elements based on media
+// @each $modifier, $breakpoint in $map-grid-props {
+//     @if ($modifier == '') {
+//         $modifier: 'xs';
+//     }
+
+//     @include create-mq($breakpoint - 1, 'max'){
+//         .hidden-#{$modifier}-down{
+//             display: none !important;
+//         }
+//     }
+
+//     @include create-mq($breakpoint, 'min'){
+//         .hidden-#{$modifier}-up{
+//             display: none !important;
+//         }
+//     }
+    
+// }

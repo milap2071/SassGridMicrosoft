@@ -1,0 +1,5 @@
+main {
+    @include create-mq($bp-lg, 'min') {
+        padding: 0 5%;
+    }
+}

@@ -1,0 +1,36 @@
+.top-canvas{
+    &__container {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        @include create-canvas-button($secondary-color, $primary-color,  $primary-color);
+
+        @include create-canvas($canvas-txt-bg, $primary-color);
+    }
+}
+
+
+
+.middle-canvas {
+
+
+    &__container {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+
+        @include create-canvas($canvas-txt-bg, $primary-color);
+    }
+}
+
+.footer-canvas {
+    &__container {
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        @include create-canvas-button($canvas-btn-black,  $secondary-color, $secondary-color, $grey);
+
+        @include create-canvas($canvas-txt-bg2, $secondary-color, $secondary-color, $primary-color);
+    }
+
+}

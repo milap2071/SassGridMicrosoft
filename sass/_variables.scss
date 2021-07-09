@@ -1,0 +1,64 @@
+// BREAKPOINT
+$bp-sm: 576;
+$bp-md: 768;
+$bp-lg: 992;
+$bp-xl: 1200;
+$bp-2xl: 1400;
+
+$breakpoints: (xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    2xl: 1400);
+
+
+// COLOR
+$primary-color: #000;
+$secondary-color: #fff;
+
+$link-color: #005da6;
+$canvas-txt-bg: #e6e6e6;
+$canvas-txt-bg2: #333;
+$canvas-btn-black: rgba(0,0,20,0.6);
+$grey: #404040;
+
+//MARGIN
+$header-element-margin: 10px;
+
+//TYPOGRAPHY
+$header-menu-fontSize: 13px;
+$footer-menu-fontSize: 11px;
+$article-head-fs: 20px;
+$article-head-bold: 600;
+$article-text-fs: 15px;
+$button-text-fs: 15px;
+$button-text-bold: 600;
+$footer-menu-color: rgba(0,0,0,0.7);
+
+$h1-fs: (xs: (20px, 600, 1.2),
+    md: 24px,
+    2xl: 34px);
+
+$h2-fs: (xs: (18px, 600, 1.3),
+    md: 20px);
+
+$p-fs:(
+    xs: (15px, 400, 1.35)
+);
+
+$pb-fs:(
+    xs: (15px, 600, 1.3)
+);
+
+$link-fs: (
+    xs:(15px, 600, 1.3)
+);
+
+$footh-fs:(
+    xs:(15px ,600 ,1.3)
+);
+
+$footMenu-fs:(
+    xs:(11px, 400, 1.3)
+);
